@@ -5,8 +5,10 @@ FROM ruby:3.3.3 AS rails-buildeerr
 ENV INSTALL_PATH /opt/app
 RUN mkdir -p $INSTALL_PATH
 
+ARG BUN_INSTALL=/usr/local
 RUN apt-get update -qq &&\
-    apt-get install --no-install-recommends -y build-essential bun libpq-dev libyaml-dev nodejs npm yarn
+    apt-get install --no-install-recommends -y build-essential curl libpq-dev libyaml-dev nodejs npm yarn &&\
+    curl -fsSL https://bun.sh/install | bash
 
 # Install rails
 RUN gem install rails bundler
