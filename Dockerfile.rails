@@ -1,0 +1,17 @@
+# Dockerfile.rails
+FROM ruby:3.3.3 AS rails-buildeerr
+
+# Default directory
+ENV INSTALL_PATH /opt/app
+RUN mkdir -p $INSTALL_PATH
+
+RUN apt-get update -qq &&\
+    apt-get install --no-install-recommends -y build-essential bun libpq-dev libyaml-dev nodejs npm yarn &&\
+
+# Install rails
+RUN gem install rails bundler
+#RUN chown -R user:user /opt/app
+WORKDIR /opt/app
+
+# Run a shell
+CMD ["/bin/sh"]
