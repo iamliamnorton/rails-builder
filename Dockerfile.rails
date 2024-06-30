@@ -1,5 +1,5 @@
 # Dockerfile.rails
-FROM ruby:3.3.3 AS rails-buildeerr
+FROM ruby:3.3.3 AS rails-builder
 
 # Default directory
 ENV INSTALL_PATH /opt/app
